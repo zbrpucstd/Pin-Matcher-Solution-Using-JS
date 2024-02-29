@@ -19,3 +19,26 @@ document
     const generatePinInputField = document.getElementById("generate-pin-input");
     generatePinInputField.value = getPin();
   });
+
+document
+  .getElementById("input-number")
+  .addEventListener("click", function (event) {
+    const inputNumber = event.target.innerText;
+
+    const inputField = document.getElementById("input-field");
+    previousTypedNumber = inputField.value;
+
+    if (isNaN(inputNumber)) {
+      if (inputNumber === "C") {
+        inputField.value = "";
+      } else if (inputNumber === "<") {
+        const numberSlice = previousTypedNumber.split("");
+        numberSlice.pop();
+        const remainingNo = numberSlice.join("");
+        inputField.value = remainingNo;
+      }
+    } else {
+      const updatedValue = previousTypedNumber + inputNumber;
+      inputField.value = updatedValue;
+    }
+  });
