@@ -53,11 +53,28 @@ document.getElementById("verify-pin").addEventListener("click", function () {
   const pinSuccess = document.getElementById("pin-success");
   const pinFailure = document.getElementById("pin-failure");
 
+  let count = 0;
+
+  const countDownField = document.getElementById("count-down");
+  const countDownString = countDownField.innerText;
+  const countDownValue = parseInt(countDownString);
+
   if (generatePinValue === inputFieldValue) {
     pinSuccess.style.display = "block";
     pinFailure.style.display = "none";
   } else {
     pinFailure.style.display = "block";
     pinSuccess.style.display = "none";
+
+    count += 1;
+  }
+
+  const countUpdatedValue = countDownValue - count;
+
+  if (countUpdatedValue >= 0) {
+    countDownField.innerText = countUpdatedValue;
+  } else {
+    alert("You entered wrong pin 3 times!!");
+    countDownField.innerText = 3;
   }
 });
