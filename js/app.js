@@ -71,7 +71,7 @@ document.getElementById("verify-pin").addEventListener("click", function () {
 
   const countUpdatedValue = countDownValue - count;
 
-  if (countUpdatedValue >= 0) {
+  if (countUpdatedValue > 0) {
     countDownField.innerText = countUpdatedValue;
   } else {
     alert("You entered wrong pin 3 times!!");
